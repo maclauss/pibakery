@@ -2200,9 +2200,9 @@ function importBlock (blockCode, typeText, typeColour) {
   for ( var x = 0; x < blockArgs.length; x++) {
     var newArg = {}
     var currentArg = blockArgs[x]
+    newArg.name = x + 1
     if (currentArg.type == 'number' || currentArg.type == 'text') {
       newArg.type = 'field_input'
-      newArg.name = x + 1
       newArg.text = currentArg.default
       validation.push({
         block: blockName,
@@ -2213,7 +2213,6 @@ function importBlock (blockCode, typeText, typeColour) {
     }
     else if (currentArg.type == 'menu') {
       newArg.type = 'field_dropdown'
-      newArg.name = x + 1
       newArg.options = []
       for ( var y = 0; y < currentArg.options.length; y++) {
         var currentOption = currentArg.options[y]
@@ -2223,7 +2222,6 @@ function importBlock (blockCode, typeText, typeColour) {
     }
     else if (currentArg.type == 'check') {
       newArg.type = 'field_checkbox'
-      newArg.name = x + 1
       newArg.checked = currentArg.default
     }
     blocklyBlock.args0.push(newArg)
