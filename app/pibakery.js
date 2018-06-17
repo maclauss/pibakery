@@ -2224,6 +2224,14 @@ function importBlock (blockCode, typeText, typeColour) {
       newArg.type = 'field_checkbox'
       newArg.checked = currentArg.default
     }
+    else if (currentArg.type == 'file') {
+      newArg.type = 'field_input'
+      if (currentArg.type == 'file') {
+        console.log(newArg.file)
+        newArg.text = fs.readFileSync(newArg.file).toString();
+        console.log(newArg.text)
+      }
+    }
     blocklyBlock.args0.push(newArg)
   }
   for ( var x = 0; x < currentCount; x++) {
