@@ -27,6 +27,8 @@
     "runpython",
     "deletefile",
     "reboot",
-    "shutdown"
+    "shutdown",
+    "environmentvariable",
+    "filecopy"
   ]
 }

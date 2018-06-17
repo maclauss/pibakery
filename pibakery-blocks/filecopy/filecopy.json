@@ -1,0 +1,31 @@
+{
+	"name": "filecopy",
+	"text": "Copy file to the specified location\\nFile location: %1\\nFile destination: %2\\nUser: %3",
+	"script": "filecopy.sh",
+    "args": [
+        {
+            "type": "file",
+            "default": "variable",
+            "maxLength": 0
+        },
+        {
+            "type": "text",
+            "default": "value",
+            "maxLength": 0
+        },
+				{
+					"type": "menu",
+					"options": ["pi", "root"]
+				}
+    ],
+	"network": false,
+	"continue": true,
+	"type": "setting",
+	"category":"setting",
+	"supportedOperatingSystems": [
+		"raspbian-pibakery.img",
+		"raspbian-lite-pibakery.img"
+	],
+	"shortDescription":"Copy file to the specified location.",
+	"longDescription":"Copy file to the specified location."
+}
