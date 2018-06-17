@@ -2197,9 +2197,9 @@ function importBlock (blockCode, typeText, typeColour) {
   blocklyBlock.message0 = blockText
 
   blocklyBlock.args0 = []
-  for ( var x = 0; x < blockJSON.args.length; x++) {
+  for ( var x = 0; x < blockArgs.length; x++) {
     var newArg = {}
-    var currentArg = blockJSON.args[x]
+    var currentArg = blockArgs[x]
     if (currentArg.type == 'number' || currentArg.type == 'text') {
       newArg.type = 'field_input'
       newArg.name = x + 1
@@ -2247,7 +2247,7 @@ function importBlock (blockCode, typeText, typeColour) {
     var args = []
     var code = '\n\tchmod 755 /boot/PiBakery/blocks/' + blockName + '/' + blockJSON.script
     code = code + '\n\t/boot/PiBakery/blocks/' + blockName + '/' + blockJSON.script + ' '
-    for ( var x = 0; x < blockJSON.args.length; x++) {
+    for ( var x = 0; x < blockArgs.length; x++) {
       var currentArg = bashEscape(block.getFieldValue(x + 1))
       if (currentArg == '') {
         currentArg = '""'
