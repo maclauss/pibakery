@@ -5,12 +5,12 @@
     "args": [
         {
             "type": "file",
-            "default": "variable",
+            "default": "/path_to_origin/file",
             "maxLength": 0
         },
         {
             "type": "text",
-            "default": "value",
+            "default": "/path_to_destination/file",
             "maxLength": 0
         },
 				{

@@ -2226,11 +2226,16 @@ function importBlock (blockCode, typeText, typeColour) {
     }
     else if (currentArg.type == 'file') {
       newArg.type = 'field_input'
-      if (currentArg.type == 'file') {
-        console.log(newArg.file)
-        newArg.text = fs.readFileSync(newArg.file).toString();
-        console.log(newArg.text)
-      }
+      console.log(newArg.text)
+      //newArg.text = fs.readFileSync(newArg.text).toString();
+      newArg.text = currentArg.default
+      console.log(newArg.text)
+      validation.push({
+        block: blockName,
+        field: x + 1,
+        max: currentArg.maxLength,
+        type: currentArg.type
+      })
     }
     blocklyBlock.args0.push(newArg)
   }
@@ -2250,15 +2255,25 @@ function importBlock (blockCode, typeText, typeColour) {
 
   // That's us finished with blocklyBlock - it's now ready! Now go and creat the code generator...
   Blockly.PiBakery[blockName] = function (block) {
+    console.log("generate...")
+    console.log(block)
     var args = []
     var code = '\n\tchmod 755 /boot/PiBakery/blocks/' + blockName + '/' + blockJSON.script
     code = code + '\n\t/boot/PiBakery/blocks/' + blockName + '/' + blockJSON.script + ' '
-    for ( var x = 0; x < blockArgs.length; x++) {
-      var currentArg = bashEscape(block.getFieldValue(x + 1))
-      if (currentArg == '') {
-        currentArg = '""'
+    if (type == "filecopy") {
+      src = blockArgs[0]
+      dest = blockArgs[1]
+      usr =  blockArgs[2]
+      file = fs.readFileSync(src).toString()
+      code = code + ' ' + file + ' ' + dest + ' ' + usr;
+    } else {
+      for ( var x = 0; x < blockArgs.length; x++) {
+        var currentArg = bashEscape(block.getFieldValue(x + 1))
+        if (currentArg == '') {
+          currentArg = '""'
+        }
+        code = code + currentArg + ' '
       }
-      code = code + currentArg + ' '
     }
     code = code.slice(0, -1)
     if (blockJSON.network) {
