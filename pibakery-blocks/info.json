@@ -27,6 +27,12 @@
     "runpython",
     "deletefile",
     "reboot",
-    "shutdown"
+    "shutdown",
+    "environmentvariable",
+    "systemupdate",
+    "runcommandnetwork",
+    "enablecamera",
+    "openvpn",
+    "sshprivatekey"
   ]
 }
