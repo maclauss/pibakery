@@ -1,0 +1,31 @@
+{
+    "name": "environmentvariable",
+    "text": "Create environment variable\\nVariable name: %1\\nValue: %2\\nFor user: %3",
+    "script": "environmentvariable.sh",
+    "args": [
+        {
+            "type": "text",
+            "default": "variable",
+            "maxLength": 0
+        },
+        {
+            "type": "text",
+            "default": "value",
+            "maxLength": 0
+        },
+                {
+                    "type": "menu",
+                    "options": ["pi", "root", "global"]
+                }
+    ],
+    "network": false,
+    "continue": true,
+    "type": "setting",
+    "category":"setting",
+    "supportedOperatingSystems": [
+        "raspbian-pibakery.img",
+        "raspbian-lite-pibakery.img"
+    ],
+    "shortDescription":"Add an environment variable for the specified user.",
+    "longDescription":"Add an environment variable for the specified user."
+}
